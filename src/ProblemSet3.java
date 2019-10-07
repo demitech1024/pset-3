@@ -28,9 +28,9 @@ public class ProblemSet3 {
         
         // comment out or uncomment as needed
         
-        // ps.sign();          // executes Exercise 1
-        // ps.parity();        // executes Exercise 2
-        // ps.ordered();       // executes Exercise 3
+        ps.sign();          // executes Exercise 1
+        ps.parity();        // executes Exercise 2
+        ps.ordered();       // executes Exercise 3
         ps.gpa();           // executes Exercise 4
         ps.grade();         // executes Exercise 5
         ps.cards();         // executes Exercise 6
@@ -270,7 +270,13 @@ public class ProblemSet3 {
      */
     
     public void leapYear() {
-
+        System.out.print("Enter a year: ");
+        int year = in.nextInt();
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            System.out.printf("\n%d is a leap year.\n\n", year);
+        } else {
+            System.out.printf("\n%d is not a leap year.\n\n", year);
+        }
     }
     
     /*
