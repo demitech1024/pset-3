@@ -28,9 +28,9 @@ public class ProblemSet3 {
         
         // comment out or uncomment as needed
         
-        ps.sign();          // executes Exercise 1
-        ps.parity();        // executes Exercise 2
-        ps.ordered();       // executes Exercise 3
+        // ps.sign();          // executes Exercise 1
+        // ps.parity();        // executes Exercise 2
+        // ps.ordered();       // executes Exercise 3
         ps.gpa();           // executes Exercise 4
         ps.grade();         // executes Exercise 5
         ps.cards();         // executes Exercise 6
@@ -93,9 +93,12 @@ public class ProblemSet3 {
         System.out.print("Enter integer: ");
         int int3 = in.nextInt();
 
-        if (int1 > int2 && int2 > int3) {
+        
+        if (int1 == int2 && int2 == int3){
+            System.out.print("\nSame.\n\n");
+        }else if (int1 > int2 && int2 > int3) {
             System.out.print("\nStrictly decreasing.\n\n");
-        } else if ((int1 >= int2 && int2 >= int3)) {
+        } else if ((int1 >= int2 && int2 >= int3 )) {
             System.out.print("\nDecreasing.\n\n");
         } else if (int1 < int2 && int2 < int3) {
             System.out.print("\nStrictly increasing.\n\n");
@@ -113,7 +116,47 @@ public class ProblemSet3 {
      */
     
     public void gpa() {
+        System.out.print("Enter a letter grade: ");
+        String grade = in.next().toLowerCase();
+        String letter = String.valueOf(grade.charAt(0));
+        String additive = "";
+        double gpaVar = 0.00;
+        try {
+            additive = String.valueOf(grade.charAt(1));
+        } catch (Exception e) {
+            
+        }
+        
 
+        switch (letter) {
+            case "a":
+                gpaVar = 4;
+                break;
+            case "b":
+                gpaVar = 3;
+                break;
+            case "c":
+                gpaVar = 2;
+                break;
+            case "d":
+                gpaVar = 1;
+                break;
+            case "f":
+                gpaVar = 0;
+                break;
+            default:
+                break;
+        }
+
+        switch (additive) {
+            case "+":
+                gpaVar += 0.33;
+                break;
+            default:
+                break;
+        }
+        System.out.printf("\nYour GPA is %.2f.\n\n", gpaVar);
+        
     }
     
     /*
@@ -123,7 +166,23 @@ public class ProblemSet3 {
      */
     
     public void grade() {
-
+        System.out.print("Enter a grade: ");
+        double gradeNum = in.nextDouble(); 
+        
+        String letterGrade;
+        
+        if (gradeNum >= 90) {
+            letterGrade = "A";
+        } else if (gradeNum < 90 && gradeNum >= 80) {
+            letterGrade = "B";
+        } else if (gradeNum < 80 && gradeNum >= 70) {
+            letterGrade = "C";
+        } else if (gradeNum < 70 && gradeNum >= 60) {
+            letterGrade = "D";
+        } else {
+            letterGrade = "F";
+        }
+        System.out.printf("\nYou recieved a %S.\n\n", letterGrade);
     }
     
     /*
@@ -133,6 +192,74 @@ public class ProblemSet3 {
      */
     
     public void cards() {
+        System.out.print("Enter a card: ");
+        String card = in.next();
+        String rank = String.valueOf(card.charAt(0)).toUpperCase();
+        String suit = String.valueOf(card.charAt(1)).toUpperCase();
+
+        switch (rank) {
+            case "A":
+                rank = "Ace";
+                break;
+            case "2":
+                rank = "Two";
+                break;
+            case "3":
+                rank = "Three";
+                break;
+            case "4":
+                rank = "Four";
+                break;
+            case "5":
+                rank = "Five";
+                break;
+            case "6":
+                rank = "Six";
+                break;
+            case "7":
+                rank = "Seven";
+                break;
+            case "8":
+                rank = "Eight";
+                break;
+            case "9":
+                rank = "Nine";
+                break;
+            case "T":
+                rank = "Ten";
+                break;
+            case "J":
+                rank = "Jack";
+                break;
+            case "Q":
+                rank = "Queen";
+                break;
+            case "K":
+                rank = "King";
+                break;
+            default:
+                System.out.println("\nThat's not a valid rank.\n");
+        }        
+        switch (suit) {
+            case "S":
+                suit = "Spades";
+                break;
+            case "C":
+                suit = "Clubs";
+                break;
+            case "D":
+                suit = "Diamonds";
+                break;
+            case "H":
+                suit = "Hearts";
+                break;
+        
+            default:
+                System.out.println("\nThat's not a valid suit.\n");
+                return;
+        }
+
+        System.out.printf("\n%s of %s.\n\n", rank, suit);
 
     }
     
