@@ -166,21 +166,29 @@ public class ProblemSet3 {
      */
     
     public void grade() {
+        final int A_MIN = 90;
+        final int B_MIN = 80;
+        final int C_MIN = 70;
+        final int D_MIN = 0;
+
         System.out.print("Enter a grade: ");
         double gradeNum = in.nextDouble(); 
         
         String letterGrade;
         
-        if (gradeNum >= 90) {
+        if (gradeNum >= A_MIN) {
             letterGrade = "A";
-        } else if (gradeNum < 90 && gradeNum >= 80) {
+        } else if (gradeNum < A_MIN && gradeNum >= B_MIN) {
             letterGrade = "B";
-        } else if (gradeNum < 80 && gradeNum >= 70) {
+        } else if (gradeNum < B_MIN && gradeNum >= C_MIN) {
             letterGrade = "C";
-        } else if (gradeNum < 70 && gradeNum >= 60) {
+        } else if (gradeNum < C_MIN && gradeNum >= D_MIN) {
             letterGrade = "D";
-        } else {
+        } else if (gradeNum < D_MIN && gradeNum >= F_MIN) {
             letterGrade = "F";
+        } else {
+            System.out.println("That is not a valid score.");
+            return;
         }
         System.out.printf("\nYou recieved a %S.\n\n", letterGrade);
     }
@@ -287,7 +295,13 @@ public class ProblemSet3 {
      */
     
     public void state() {
-
+        System.out.print("Enter a temperature: ");
+        double temp = in.nextDouble();
+        System.out.print("Enter a scale: ");
+        char scale = in.next();
+        
+        
+        
     }
     
     /*
