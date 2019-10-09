@@ -169,7 +169,8 @@ public class ProblemSet3 {
         final int A_MIN = 90;
         final int B_MIN = 80;
         final int C_MIN = 70;
-        final int D_MIN = 0;
+        final int D_MIN = 60;
+        final int F_MIN = 0;
 
         System.out.print("Enter a grade: ");
         double gradeNum = in.nextDouble(); 
@@ -298,7 +299,7 @@ public class ProblemSet3 {
         System.out.print("Enter a temperature: ");
         double temp = in.nextDouble();
         System.out.print("Enter a scale: ");
-        char scale = in.next();
+        String scale = in.next();
         
         
         
