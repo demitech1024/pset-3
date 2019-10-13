@@ -96,7 +96,7 @@ public class ProblemSet3 {
         
         if (int1 == int2 && int2 == int3){
             System.out.print("\nSame.\n\n");
-        }else if (int1 > int2 && int2 > int3) {
+        } else if (int1 > int2 && int2 > int3) {
             System.out.print("\nStrictly decreasing.\n\n");
         } else if ((int1 >= int2 && int2 >= int3 )) {
             System.out.print("\nDecreasing.\n\n");
@@ -166,6 +166,7 @@ public class ProblemSet3 {
      */
     
     public void grade() {
+        final int A_MAX = 100;
         final int A_MIN = 90;
         final int B_MIN = 80;
         final int C_MIN = 70;
@@ -177,7 +178,7 @@ public class ProblemSet3 {
         
         String letterGrade;
         
-        if (gradeNum >= A_MIN) {
+        if (gradeNum >= A_MIN && gradeNum <= A_MAX) {
             letterGrade = "A";
         } else if (gradeNum < A_MIN && gradeNum >= B_MIN) {
             letterGrade = "B";
@@ -296,10 +297,41 @@ public class ProblemSet3 {
      */
     
     public void state() {
+        final int WATER_BOIL_C = 100;
+        final int WATER_FREEZE_C = 0;
+        final int WATER_BOIL_F = 212;
+        final int WATER_FREEZE_F = 32;
+
         System.out.print("Enter a temperature: ");
         double temp = in.nextDouble();
         System.out.print("Enter a scale: ");
-        String scale = in.next();
+        String scale = in.next().toLowerCase();
+        String output;
+        if (scale.equals("f")) {
+            if (temp >= WATER_BOIL_F) {
+                output = "Gas.";
+            } else if (temp < WATER_BOIL_F && temp > WATER_FREEZE_F) {
+                output = "Liquid.";
+            } else if (temp <= WATER_FREEZE_F) {
+                output = "Solid.";
+            } else {
+                output = "Invalid temperature.";
+            }
+        } else if (scale.equals("c")) {
+            if (temp >= WATER_BOIL_C) {
+                output = "Gas.";
+            } else if (temp < WATER_BOIL_C && temp > WATER_FREEZE_C) {
+                output = "Liquid.";
+            } else if (temp <= WATER_FREEZE_C) {
+                output = "Solid.";
+            } else {
+                output = "Invalid temperature.";
+            }
+        } else {
+            output = "Invalid scale.";
+        }
+
+        System.out.printf("\n%s\n\n", output);
         
         
         
@@ -312,7 +344,38 @@ public class ProblemSet3 {
      */
     
     public void months() {        
+        final int MIN_LENGTH = 3;
+        
+        System.out.print("Enter a month: ");
+        String month = in.nextLine().toUpperCase;
+        int inputLength = month.length();
 
+        String jan = "JANUARY";
+        String feb = "FEBRUARY";
+        String mar = "MARCH";
+        String apr = "APRIL";
+        String may = "MAY";
+        String jun = "JUNE";
+        String jul = "JULY";
+        String aug = "AUGUST";
+        String sep = "SEPTEMBER";
+        String oct = "OCTOBER";
+        String nov = "NOVEMBER";
+        String dec = "DECEMBER";
+
+        if (inputLength >= MIN_LENGTH) {
+            if (month.equals(sep.substring(0, inputLength + 1)) || month.equals(apr.substring(0, inputLength + 1)) || month.equals(jun.substring(0, inputLength + 1)) || month.equals(nov.substring(0, inputLength + 1))) {
+                System.out.println("\n30 days.\n");
+            } else if (month.equals(feb.substring(0, inputLength + 1))) {
+                System.out.println("\n28 or 29 days.\n");
+            } else if (month.equals(jan.substring(0, inputLength + 1) || month.equals(mar.substring(0, inputLength + 1) || month.equals(may.substring(0, inputLength + 1) || month.equals(jul.substring(0, inputLength + 1) || month.equals(aug.substring(0, inputLength + 1) || month.equals(oct.substring(0, inputLength + 1) || month.equals(dec.substring(0, inputLength + 1)) {
+                System.out.println("\n31 days.\n");
+            } else {
+                System.out.println("\nThat's not a valid month.\n");
+            }
+        }
+
+        
     }
     
     /*
