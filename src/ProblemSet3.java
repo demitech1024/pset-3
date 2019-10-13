@@ -176,7 +176,7 @@ public class ProblemSet3 {
         System.out.print("Enter a grade: ");
         double gradeNum = in.nextDouble(); 
         
-        String letterGrade;
+        String letterGrade = "";
         
         if (gradeNum >= A_MIN && gradeNum <= A_MAX) {
             letterGrade = "A";
@@ -188,8 +188,11 @@ public class ProblemSet3 {
             letterGrade = "D";
         } else if (gradeNum < D_MIN && gradeNum >= F_MIN) {
             letterGrade = "F";
-        } else {
-            System.out.println("That is not a valid score.");
+        } else if (gradeNum > A_MAX) {
+            System.out.println("\nGrades above 100 are invalid.\n");
+            return;
+        } else if (gradeNum < F_MIN) {
+            System.out.println("\nGrades below 0 are invalid.\n");
             return;
         }
         System.out.printf("\nYou recieved a %S.\n\n", letterGrade);
@@ -347,7 +350,7 @@ public class ProblemSet3 {
         final int MIN_LENGTH = 3;
         
         System.out.print("Enter a month: ");
-        String month = in.nextLine().toUpperCase;
+        String month = in.next().toUpperCase();
         int inputLength = month.length();
 
         String jan = "JANUARY";
@@ -362,17 +365,28 @@ public class ProblemSet3 {
         String oct = "OCTOBER";
         String nov = "NOVEMBER";
         String dec = "DECEMBER";
+        String polyTail = "";
+
+        for (int i = 0; i < inputLength; i++) {
+            polyTail = polyTail + " ";
+        }
 
         if (inputLength >= MIN_LENGTH) {
-            if (month.equals(sep.substring(0, inputLength + 1)) || month.equals(apr.substring(0, inputLength + 1)) || month.equals(jun.substring(0, inputLength + 1)) || month.equals(nov.substring(0, inputLength + 1))) {
+            if (month.equals((sep + polyTail).substring(0, inputLength)) || month.equals((apr + polyTail).substring(0, inputLength)) 
+              || month.equals((jun + polyTail).substring(0, inputLength)) || month.equals((nov + polyTail).substring(0, inputLength))) {
                 System.out.println("\n30 days.\n");
-            } else if (month.equals(feb.substring(0, inputLength + 1))) {
+            } else if (month.equals((feb + polyTail).substring(0, inputLength))) {
                 System.out.println("\n28 or 29 days.\n");
-            } else if (month.equals(jan.substring(0, inputLength + 1) || month.equals(mar.substring(0, inputLength + 1) || month.equals(may.substring(0, inputLength + 1) || month.equals(jul.substring(0, inputLength + 1) || month.equals(aug.substring(0, inputLength + 1) || month.equals(oct.substring(0, inputLength + 1) || month.equals(dec.substring(0, inputLength + 1)) {
+            } else if (month.equals((jan + polyTail).substring(0, inputLength)) || month.equals((mar + polyTail).substring(0, inputLength)) 
+              || month.equals((may + polyTail).substring(0, inputLength)) || month.equals((jul + polyTail).substring(0, inputLength)) 
+              || month.equals((aug + polyTail).substring(0, inputLength)) || month.equals((oct + polyTail).substring(0, inputLength)) 
+              || month.equals((dec + polyTail).substring(0, inputLength))) {
                 System.out.println("\n31 days.\n");
             } else {
-                System.out.println("\nThat's not a valid month.\n");
+                System.out.println("\nThat is not a valid month.\n");
             }
+        } else {
+            System.out.println("\nThat is not a valid month.\n");
         }
 
         
@@ -385,6 +399,23 @@ public class ProblemSet3 {
      */
     
     public void salary() {
+        final int NORMAL_HOURS = 40;
+        final double OVRTME_MULT = 1.5;
+        
+        System.out.print("Wage: ");
+        double wage = in.nextDouble();
+        System.out.print("Hours: ");
+        double hours = in.nextDouble();
+        double money = 0;
 
+        if (hours > NORMAL_HOURS) {
+            hours = hours - NORMAL_HOURS;
+            money = (double) NORMAL_HOURS * wage;
+            money += hours * wage * OVRTME_MULT;
+        } else {
+            money = hours * wage;
+        }
+
+        System.out.printf("\nYou'll make $%,.2f this week.\n\n", money);
     }
 }
