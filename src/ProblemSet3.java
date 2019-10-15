@@ -121,6 +121,7 @@ public class ProblemSet3 {
         final int C_GPA = 2;
         final int D_GPA = 1;
         final int F_GPA = 0;
+        final double modifier = 0.33;
         System.out.print("Enter a letter grade: ");
         String grade = in.next().toLowerCase();
         String letter = String.valueOf(grade.charAt(0));
@@ -155,10 +156,10 @@ public class ProblemSet3 {
         if (gpaVar != 0 || gpaVar != 4) {
             switch (additive) {
                 case "+":
-                    gpaVar += (gpaVar != 4) ? 0.33: 0;
+                    gpaVar += (gpaVar != 4) ? modifier: 0;
                     break;
                 case "-":
-                    gpaVar -= (gpaVar != 0) ? 0.33: 0;
+                    gpaVar -= (gpaVar != 0) ? modifier: 0;
                 default:
                     break;
             }
@@ -185,9 +186,11 @@ public class ProblemSet3 {
         double gradeNum = in.nextDouble(); 
         
         String letterGrade = "";
+        String aOrAn = "a";
         
         if (gradeNum >= A_MIN && gradeNum <= A_MAX) {
             letterGrade = "A";
+            aOrAn = "an";
         } else if (gradeNum < A_MIN && gradeNum >= B_MIN) {
             letterGrade = "B";
         } else if (gradeNum < B_MIN && gradeNum >= C_MIN) {
@@ -203,7 +206,7 @@ public class ProblemSet3 {
             System.out.println("\nGrades below 0 are invalid.\n");
             return;
         }
-        System.out.printf("\nYou recieved a %S.\n\n", letterGrade);
+        System.out.printf("\nYou recieved %s %S.\n\n", aOrAn, letterGrade);
     }
     
     /*
@@ -339,7 +342,7 @@ public class ProblemSet3 {
                 output = "Invalid temperature.";
             }
         } else {
-            output = "Invalid scale.";
+            output = "That's not a valid scale.";
         }
 
         System.out.printf("\n%s\n\n", output);
@@ -391,10 +394,10 @@ public class ProblemSet3 {
               || month.equals((dec + polyTail).substring(0, inputLength))) {
                 System.out.println("\n31 days.\n");
             } else {
-                System.out.println("\nThat is not a valid month.\n");
+                System.out.println("\nThat's not a valid month.\n");
             }
         } else {
-            System.out.println("\nThat is not a valid month.\n");
+            System.out.println("\nThat's not a valid month.\n");
         }
 
         
