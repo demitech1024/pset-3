@@ -116,6 +116,11 @@ public class ProblemSet3 {
      */
     
     public void gpa() {
+        final int A_GPA = 4;
+        final int B_GPA = 3;
+        final int C_GPA = 2;
+        final int D_GPA = 1;
+        final int F_GPA = 0;
         System.out.print("Enter a letter grade: ");
         String grade = in.next().toLowerCase();
         String letter = String.valueOf(grade.charAt(0));
@@ -130,30 +135,33 @@ public class ProblemSet3 {
 
         switch (letter) {
             case "a":
-                gpaVar = 4;
+                gpaVar = (double) A_GPA;
                 break;
             case "b":
-                gpaVar = 3;
+                gpaVar = (double) B_GPA;
                 break;
             case "c":
-                gpaVar = 2;
+                gpaVar = (double) C_GPA;
                 break;
             case "d":
-                gpaVar = 1;
+                gpaVar = (double) D_GPA;
                 break;
             case "f":
-                gpaVar = 0;
+                gpaVar = (double) F_GPA;
                 break;
             default:
                 break;
         }
-
-        switch (additive) {
-            case "+":
-                gpaVar += 0.33;
-                break;
-            default:
-                break;
+        if (gpaVar != 0 || gpaVar != 4) {
+            switch (additive) {
+                case "+":
+                    gpaVar += (gpaVar != 4) ? 0.33: 0;
+                    break;
+                case "-":
+                    gpaVar -= (gpaVar != 0) ? 0.33: 0;
+                default:
+                    break;
+            }
         }
         System.out.printf("\nYour GPA is %.2f.\n\n", gpaVar);
         
